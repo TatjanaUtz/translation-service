@@ -1,28 +1,28 @@
 """Translation Service.
 
-This module provides a service for translating text using a specified translator.
+This module provides the TranslationService class, which offers translation functionalities using a given Translator
+instance. The TranslationService class includes methods to get the supported source and target languages, as well as to
+translate text between languages.
 """
 
-from core.translation import Translator
+from core.translator import Translator
 
 
 class TranslationService:
-    """A service for translating text from one language to another."""
+    """A service class that provides translation functionalities using a given Translator instance."""
 
     def __init__(self, translator: Translator) -> None:
-        """Initialize the TranslationService with a given translator."""
+        """Initialize the TranslationService with a Translator instance."""
         self.translator = translator
 
-    def translate(self, text: str, src_lang: str, tgt_lang: str, num_translations: int) -> list[str]:
-        """Translate the given text from the source language to the target language.
+    def get_source_languages(self) -> list[str]:
+        """Get the list of source languages supported by the translator."""
+        return self.translator.get_source_languages()
 
-        Args:
-            text (str): The text to be translated.
-            src_lang (str): The source language code.
-            tgt_lang (str): The target language code.
-            num_translations (int): The number of translations to perform.
+    def get_target_languages(self) -> list[str]:
+        """Get the list of target languages supported by the translator."""
+        return self.translator.get_target_languages()
 
-        Returns:
-            list[str]: A list of translated text strings.
-        """
-        return self.translator.translate(text, src_lang, tgt_lang, num_translations)
+    def translate(self, text: str, src_lang: str, tgt_lang: str) -> str:
+        """Translate text from the source language to the target language."""
+        return self.translator.translate(text, src_lang, tgt_lang)
