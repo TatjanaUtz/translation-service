@@ -5,11 +5,10 @@ from core.translator_model import TranslatorModel
 
 @pytest.fixture(autouse=True)
 def mock_pipeline():
-    with patch("core.translator_model.pipeline") as mock:
+    with patch("core.translator_model.pipeline", autospec=True) as mock:
         yield mock
 
 def test_initialization(mock_pipeline):
-    mock_pipeline.return_value = MagicMock()
     translator = TranslatorModel("en", "de")
     assert translator.model is not None
     mock_pipeline.assert_called_once_with(task="translation", model="Helsinki-NLP/opus-mt-en-de")
