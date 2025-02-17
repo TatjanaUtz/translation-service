@@ -17,12 +17,12 @@ class TranslatorModel:
         self.model = pipeline(task="translation", model=model_name)
         logger.debug(f"Initialized translator model: {model_name}")
 
-    def translate(self, text: str) -> str:
+    def translate(self, text: str, source_language: str | None = None, target_language: str | None = None) -> str:
         """Translate the given text from the source language to the target language."""
         if not text.strip():
             msg = "Text to be translated cannot be empty"
             logger.error(msg)
             raise ValueError(msg)
 
-        output = self.model(text, clean_up_tokenization_spaces=True)
+        output = self.model(text, src_lang=source_language, tgt_lang=target_language, clean_up_tokenization_spaces=True)
         return output[0].get("translation_text")

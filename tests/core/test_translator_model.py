@@ -38,3 +38,12 @@ def test_translation_long_string():
         translator = TranslatorModel("en", "de")
         result = translator.translate(long_text)
         assert result == "Hallo, Welt! " * 1000
+
+# Test src_lang and tgt_lang Parameters
+def test_src_tgt_language_parameters():
+    with patch('core.translator_model.pipeline') as mock_pipeline:
+        mock_model = MagicMock()
+        mock_pipeline.return_value = mock_model
+        translator = TranslatorModel("en", "de")
+        translator.translate("Hello, world!", "en", "de")
+        mock_model.assert_called_with("Hello, world!", src_lang="en", tgt_lang="de", clean_up_tokenization_spaces=True)
