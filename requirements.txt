@@ -1,0 +1,12 @@
+fastapi
+langcodes
+lingua-language-detector
+loguru
+numpy
+pydantic
+pydantic-settings
+sacremoses
+sentencepiece
+torch
+transformers
+uvicorn
