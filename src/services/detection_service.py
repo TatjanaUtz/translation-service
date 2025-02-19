@@ -1,40 +1,18 @@
-"""Language Detection Service.
+"""Detection Service.
 
-This module provides a service for detecting languages in text using a LanguageDetector.
+This module provides the DetectionService class for detecting the language of a given text.
 """
 
-from core.detection import LanguageDetector
+from core.detector import Detector
 
 
-class LanguageDetectionService:
-    """A service that uses a LanguageDetector to detect languages in text.
+class DetectionService:
+    """A service class for detecting the language of a given text using a specified detector."""
 
-    Attributes:
-        detector (LanguageDetector): An instance of LanguageDetector used for language detection.
-    """
-
-    def __init__(self, detector: LanguageDetector) -> None:
-        """Initialize the LanguageDetectionService with a LanguageDetector."""
+    def __init__(self, detector: Detector) -> None:
+        """Initialize the DetectionService with a given detector."""
         self.detector = detector
 
     def detect_language(self, text: str) -> str:
-        """Detect the language of the given text.
-
-        Args:
-            text (str): The text to detect the language of.
-
-        Returns:
-            str: The detected language.
-        """
+        """Detect the language of the provided text."""
         return self.detector.detect_language(text)
-
-    def detect_languages(self, text: str) -> list[str]:
-        """Detect multiple languages in the given text.
-
-        Args:
-            text (str): The text to detect the languages of.
-
-        Returns:
-            list[str]: A list of detected languages.
-        """
-        return self.detector.detect_multiple_languages(text)
