@@ -66,7 +66,7 @@ document.getElementById('translationForm').addEventListener('submit', async func
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ text, sourceLanguage, targetLanguage })
+        body: JSON.stringify({ 'text': text, 'source_language': sourceLanguage, 'target_language': targetLanguage })
     });
 
     const result = await response.json();
