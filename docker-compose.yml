@@ -1,0 +1,11 @@
+services:
+  translation-service:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: ${IMAGE_NAME:-translation-service:latest}
+    ports:
+    - "${HOST_SERVER_PORT:-8000}:8000"
+    volumes:
+      - ${HOST_HF_HOME:-/home/deployer/translation-service/.cache/huggingface}:/root/.cache/huggingface
+    restart: always
