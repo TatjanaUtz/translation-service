@@ -33,10 +33,10 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[Any, Any]:
     yield
 
 
-app = FastAPI()  # lifespan=lifespan
+app = FastAPI(lifespan=lifespan)
 app.include_router(detect.router, tags=["Language Detection"])
 app.include_router(translate.router, tags=["Translation"])
 app.mount(path="/", app=StaticFiles(directory="frontend", html=True), name="static")
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)  # noqa: S104
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)  # noqa: S104
