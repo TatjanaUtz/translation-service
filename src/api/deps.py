@@ -5,13 +5,13 @@ This file defines the dependencies for the API routes. It provides the language 
 
 from fastapi import Request
 
-from services.detection_service import LanguageDetectionService
+from services.detection_service import DetectionService
 from services.translation_service import TranslationService
 
 
-def get_language_detection_service(request: Request) -> LanguageDetectionService:
+def get_detection_service(request: Request) -> DetectionService:
     """Retrieve the language detection service from the application state."""
-    return request.app.state.language_detection_service
+    return request.app.state.detection_service
 
 
 def get_translation_service(request: Request) -> TranslationService:
