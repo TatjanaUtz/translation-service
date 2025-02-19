@@ -8,8 +8,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from api.deps import get_language_detection_service, get_translation_service
-from services.detection_service import LanguageDetectionService
+from api.deps import get_detection_service, get_translation_service
+from services.detection_service import DetectionService
 from services.translation_service import TranslationService
 from utils.language_utils import get_name_from_code
 
@@ -62,7 +62,7 @@ class TranslationResponse(BaseModel):
 async def translate_text(
     request: TranslationRequest,
     service: Annotated[TranslationService, Depends(get_translation_service)],
-    detection_service: Annotated[LanguageDetectionService, Depends(get_language_detection_service)],
+    detection_service: Annotated[DetectionService, Depends(get_detection_service)],
 ) -> TranslationResponse:
     """Endpoint to translate text from a source language to a target language."""
     if not request.source_language:

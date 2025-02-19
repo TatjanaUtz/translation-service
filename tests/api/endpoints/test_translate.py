@@ -2,18 +2,18 @@ from fastapi.testclient import TestClient
 from unittest.mock import MagicMock
 from main import app
 
-from api.deps import get_translation_service, get_language_detection_service
+from api.deps import get_translation_service, get_detection_service
 from services.translation_service import TranslationService
-from services.detection_service import LanguageDetectionService
+from services.detection_service import DetectionService
 
 client = TestClient(app)
 
 # Mock services
 translation_service_mock = MagicMock(spec=TranslationService)
-language_detection_service_mock = MagicMock(spec=LanguageDetectionService)
+language_detection_service_mock = MagicMock(spec=DetectionService)
 
 app.dependency_overrides[get_translation_service] = lambda: translation_service_mock
-app.dependency_overrides[get_language_detection_service] = lambda: language_detection_service_mock
+app.dependency_overrides[get_detection_service] = lambda: language_detection_service_mock
 
 
 def test_get_source_languages():
