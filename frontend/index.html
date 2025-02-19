@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Translation Service</h1>
+        <div class="tabs">
+            <button class="tablink" onclick="openTab(event, 'Detection')">Language Detection</button>
+            <button class="tablink" onclick="openTab(event, 'Translation')">Translation</button>
+        </div>
+        <div id="Detection" class="tabcontent">
+            <form id="detectionForm">
+                <label for="detectText">Text:</label>
+                <textarea id="detectText" name="text" required></textarea>
+                <button type="submit">Detect Language</button>
+            </form>
+            <div id="detectionResult">
+                <h2>Detected Language</h2>
+                <p id="detectedLanguage"></p>
+            </div>
+        </div>
+        <div id="Translation" class="tabcontent">
+            <form id="translationForm">
+                <label for="translateText">Text:</label>
+                <textarea id="translateText" name="text" required></textarea>
+
+                <label for="sourceLanguage">Source Language (optional):</label>
+                <select id="sourceLanguage" name="sourceLanguage">
+                    <option value="">Auto-detect</option>
+                </select>
+
+                <label for="targetLanguage">Target Language:</label>
+                <select id="targetLanguage" name="targetLanguage" required></select>
+
+                <button type="submit">Translate</button>
+            </form>
+            <div id="translationResult">
+                <h2>Result</h2>
+                <p id="detectedLanguageTranslation"></p>
+                <p id="translation"></p>
+            </div>
+        </div>
+        <div class="api-docs">
+            <a href="/docs" target="_blank">API Documentation</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
