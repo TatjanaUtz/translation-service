@@ -214,4 +214,4 @@ This will stop and remove the containers, networks, and volumes created by Docke
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@tutz](https://github.com/tutz) - Idea & Initial work
+- [@TatjanaUtz](https://github.com/TatjanaUtz) - Idea & Initial work
